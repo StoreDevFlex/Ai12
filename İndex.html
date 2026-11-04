@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="tr" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex AI - Limitsiz Yapay Zeka Deneyimi</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        cyber: {
+                            bg: '#080811',
+                            card: '#121225',
+                            border: '#1f1f3e',
+                            accent: '#8b5cf6',
+                            neon: '#00f0ff',
+                            pink: '#ff007f'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        tech: ['Space Grotesk', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #080811;
+            color: #f3f4f6;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(139, 92, 246, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 85% 85%, rgba(0, 240, 255, 0.15) 0%, transparent 40%);
+        }
+        .neon-border {
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);
+            border: 1px solid rgba(139, 92, 246, 0.4);
+        }
+        .neon-text-cyan {
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.6);
+        }
+        .glass-card {
+            background: rgba(18, 18, 37, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col font-sans selection:bg-cyber-accent selection:text-white">
+
+    <!-- Header -->
+    <header class="w-full border-b border-cyber-border/50 sticky top-0 bg-cyber-bg/80 backdrop-blur-md z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyber-accent to-cyber-neon flex items-center justify-center text-white font-black text-xl shadow-lg shadow-cyber-accent/30">
+                    F
+                </div>
+                <span class="font-tech text-2xl font-bold tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-200 to-cyber-neon">
+                    FLEX <span class="text-cyber-accent">AI</span>
+                </span>
+            </div>
+
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
+                <a href="#features" class="hover:text-cyber-neon transition">Özellikler</a>
+                <a href="#sandbox" class="hover:text-cyber-neon transition">Canlı Test</a>
+                <a href="#download" class="hover:text-cyber-neon transition">Uygulamayı İndir</a>
+            </nav>
+
+            <a href="#download" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyber-accent to-cyber-pink text-white font-semibold text-sm hover:opacity-90 transition shadow-lg shadow-cyber-accent/20 flex items-center gap-2">
+                <i class="fa-solid fa-download"></i> İndir
+            </a>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col gap-20">
+
+        <!-- Hero Section -->
+        <section class="text-center py-10 relative">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-cyber-neon/30 bg-cyber-neon/10 text-cyber-neon text-xs font-semibold mb-6">
+                <i class="fa-solid fa-bolt"></i> TÜM SEÇENEKLER LİMİTSİZ & ÜCRETSİZ
+            </div>
+            
+            <h1 class="font-tech text-4xl sm:text-6xl font-extrabold text-white tracking-tight leading-tight max-w-4xl mx-auto mb-6">
+                iOS ve Android İçin <br>
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyber-neon via-cyber-accent to-cyber-pink neon-text-cyan">
+                    Yapay Zeka Asistanın Flex AI
+                </span>
+            </h1>
+
+            <p class="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto mb-10">
+                Profil yükleme seçeneği ile iOS cihazına doğrudan uygulama olarak yükle. Sınırsız metin sohbeti, kod yardımı ve yüksek kaliteli görsel oluşturma tek bir yerde.
+            </p>
+
+            <!-- Download Action Buttons -->
+            <div id="download" class="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto">
+                <button onclick="downloadIOSProfile()" class="w-full sm:w-auto flex-1 bg-cyber-card border border-cyber-accent hover:bg-cyber-accent/20 text-white font-semibold py-4 px-6 rounded-2xl flex items-center justify-center gap-3 transition shadow-xl group">
+                    <i class="fa-brands fa-apple text-3xl text-cyber-neon group-hover:scale-110 transition"></i>
+                    <div class="text-left">
+                        <div class="text-xs text-gray-400">iOS Konfigürasyon</div>
+                        <div class="text-sm font-bold text-white">Profilini İndir</div>
+                    </div>
+                </button>
+
+                <button onclick="downloadAndroidAPK()" class="w-full sm:w-auto flex-1 bg-cyber-card border border-cyber-border hover:bg-cyber-border/60 text-white font-semibold py-4 px-6 rounded-2xl flex items-center justify-center gap-3 transition shadow-xl group">
+                    <i class="fa-brands fa-android text-3xl text-green-400 group-hover:scale-110 transition"></i>
+                    <div class="text-left">
+                        <div class="text-xs text-gray-400">Android İçin</div>
+                        <div class="text-sm font-bold text-white">APK İndir</div>
+                    </div>
+                </button>
+            </div>
+        </section>
+
+        <!-- Features Grid -->
+        <section id="features" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="glass-card p-6 rounded-2xl border border-cyber-border">
+                <div class="w-12 h-12 rounded-xl bg-cyber-accent/20 text-cyber-accent flex items-center justify-center text-xl mb-4">
+                    <i class="fa-solid fa-infinity"></i>
+                </div>
+                <h3 class="text-lg font-bold text-white mb-2">Tamamen Limitsiz</h3>
+                <p class="text-gray-400 text-sm">Günlük sınır, jeton veya mesaj kısıtlaması olmadan Flex AI'yı istediğin kadar kullanabilirsin.</p>
+            </div>
+
+            <div class="glass-card p-6 rounded-2xl border border-cyber-border">
+                <div class="w-12 h-12 rounded-xl bg-cyber-neon/20 text-cyber-neon flex items-center justify-center text-xl mb-4">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                </div>
+                <h3 class="text-lg font-bold text-white mb-2">Görsel Oluşturma</h3>
+                <p class="text-gray-400 text-sm">Aklındaki fikirleri yaz, Flex AI anında senin için yüksek çözünürlüklü görseller üretsin.</p>
+            </div>
+
+            <div class="glass-card p-6 rounded-2xl border border-cyber-border">
+                <div class="w-12 h-12 rounded-xl bg-cyber-pink/20 text-cyber-pink flex items-center justify-center text-xl mb-4">
+                    <i class="fa-solid fa-mobile-screen-button"></i>
+                </div>
+                <h3 class="text-lg font-bold text-white mb-2">Profil İle Doğrudan Kurulum</h3>
+                <p class="text-gray-400 text-sm">iOS cihazında Safari üzerinden profili indirip Ayarlar'dan onaylayarak doğrudan ekrana ekle.</p>
+            </div>
+        </section>
+
+        <!-- Live Sandbox / Interactive Demo -->
+        <section id="sandbox" class="glass-card rounded-3xl p-6 sm:p-8 border border-cyber-accent/30 neon-border">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 pb-6 border-b border-cyber-border">
+                <div>
+                    <h2 class="text-2xl font-bold text-white font-tech">Flex AI Canlı Deneyim</h2>
+                    <p class="text-xs text-gray-400">İster Sohbet Et, İster Görsel Üret</p>
+                </div>
+
+                <div class="flex items-center gap-2 bg-cyber-bg p-1 rounded-xl border border-cyber-border">
+                    <button id="modeChat" onclick="setMode('chat')" class="px-4 py-2 rounded-lg text-xs font-semibold bg-cyber-accent text-white transition">Sohbet</button>
+                    <button id="modeImage" onclick="setMode('image')" class="px-4 py-2 rounded-lg text-xs font-semibold text-gray-400 hover:text-white transition">Görsel Çiz</button>
+                </div>
+            </div>
+
+            <!-- Chat Output Window -->
+            <div id="chatOutput" class="h-64 overflow-y-auto bg-cyber-bg/90 rounded-2xl p-4 mb-4 border border-cyber-border text-sm flex flex-col gap-3">
+                <div class="bg-cyber-card border border-cyber-border rounded-2xl p-3 max-w-[80%] self-start text-gray-300">
+                    <span class="text-cyber-neon font-bold text-xs block mb-1">Flex AI</span>
+                    Selam! Ben Flex AI. iOS profili veya APK ile beni doğrudan ana ekranına yükleyebilirsin. Sana nasıl yardımcı olabilirim?
+                </div>
+            </div>
+
+            <!-- Input Controls -->
+            <div class="flex gap-2">
+                <input type="text" id="userInput" placeholder="Flex AI'ya bir şeyler yaz..." class="flex-1 bg-cyber-bg border border-cyber-border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyber-accent transition">
+                <button onclick="handleSend()" class="bg-cyber-accent hover:bg-cyber-accent/80 text-white px-6 py-3 rounded-xl font-semibold text-sm transition flex items-center gap-2">
+                    <span>Gönder</span>
+                    <i class="fa-solid fa-paper-plane text-xs"></i>
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- iOS Direct Installation Instructions Modal -->
+    <div id="iosModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-cyber-card border border-cyber-accent rounded-3xl max-w-md w-full p-6 text-center relative shadow-2xl">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            
+            <div class="w-16 h-16 bg-cyber-accent/20 text-cyber-neon rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl">
+                <i class="fa-solid fa-gear"></i>
+            </div>
+
+            <h3 class="text-xl font-bold text-white mb-2">Profil İndirildi!</h3>
+            <p class="text-gray-300 text-sm mb-6">Uygulamanın ana ekranına gelmesi için şu 3 basit adımı tamamla:</p>
+
+            <div class="text-left text-xs text-gray-300 space-y-3 mb-6 bg-cyber-bg p-4 rounded-xl border border-cyber-border">
+                <div class="flex items-start gap-3">
+                    <span class="w-5 h-5 rounded-full bg-cyber-accent text-white flex items-center justify-center text-xs shrink-0">1</span>
+                    <span>Çıkan uyarıda <b>"İzin Ver"</b> seçeneğine tıkla.</span>
+                </div>
+                <div class="flex items-start gap-3">
+                    <span class="w-5 h-5 rounded-full bg-cyber-accent text-white flex items-center justify-center text-xs shrink-0">2</span>
+                    <span>iPhone / iPad <b>Ayarlar</b> uygulamasını aç.</span>
+                </div>
+                <div class="flex items-start gap-3">
+                    <span class="w-5 h-5 rounded-full bg-cyber-accent text-white flex items-center justify-center text-xs shrink-0">3</span>
+                    <span>En üstte çıkan <b>"İndirilen Profil"</b> sekmesine girip sağ üstteki <b>"Yükle"</b> butonuna bas.</span>
+                </div>
+            </div>
+
+            <button onclick="closeModal()" class="w-full bg-cyber-accent text-white py-3 rounded-xl font-bold text-sm">
+                Anladım
+            </button>
+        </div>
+    </div>
+
+    <!-- Script Section -->
+    <script>
+        let currentMode = 'chat';
+
+        function setMode(mode) {
+            currentMode = mode;
+            const chatBtn = document.getElementById('modeChat');
+            const imgBtn = document.getElementById('modeImage');
+            const input = document.getElementById('userInput');
+
+            if(mode === 'chat') {
+                chatBtn.className = "px-4 py-2 rounded-lg text-xs font-semibold bg-cyber-accent text-white transition";
+                imgBtn.className = "px-4 py-2 rounded-lg text-xs font-semibold text-gray-400 hover:text-white transition";
+                input.placeholder = "Flex AI'ya bir şeyler yaz...";
+            } else {
+                imgBtn.className = "px-4 py-2 rounded-lg text-xs font-semibold bg-cyber-pink text-white transition";
+                chatBtn.className = "px-4 py-2 rounded-lg text-xs font-semibold text-gray-400 hover:text-white transition";
+                input.placeholder = "Çizmek istediğin görseli tarif et (Örn: Cyberpunk araba)...";
+            }
+        }
+
+        function handleSend() {
+            const input = document.getElementById('userInput');
+            const chatOutput = document.getElementById('chatOutput');
+            const text = input.value.trim();
+
+            if(!text) return;
+
+            // User Message
+            const userMsg = document.createElement('div');
+            userMsg.className = "bg-cyber-accent/20 border border-cyber-accent/40 rounded-2xl p-3 max-w-[80%] self-end text-white";
+            userMsg.innerText = text;
+            chatOutput.appendChild(userMsg);
+
+            input.value = '';
+            chatOutput.scrollTop = chatOutput.scrollHeight;
+
+            // AI Response Simulation
+            setTimeout(() => {
+                const aiMsg = document.createElement('div');
+                aiMsg.className = "bg-cyber-card border border-cyber-border rounded-2xl p-3 max-w-[80%] self-start text-gray-300";
+                
+                if(currentMode === 'chat') {
+                    aiMsg.innerHTML = `<span class="text-cyber-neon font-bold text-xs block mb-1">Flex AI</span> Flex AI ile tüm isteklerin limitsiz! "${text}" konulu sorunu harika bir şekilde yanıtlıyorum...`;
+                } else {
+                    aiMsg.innerHTML = `<span class="text-cyber-pink font-bold text-xs block mb-1">Flex AI Image</span>
+                        <p class="mb-2">"${text}" için görsel oluşturuldu:</p>
+                        <div class="w-full h-40 rounded-xl bg-gradient-to-r from-purple-900 to-indigo-900 flex items-center justify-center text-xs text-cyber-neon border border-cyber-border">
+                            [Oluşturulan Görsel: ${text}]
+                        </div>`;
+                }
+                
+                chatOutput.appendChild(aiMsg);
+                chatOutput.scrollTop = chatOutput.scrollHeight;
+            }, 700);
+        }
+
+        // iOS Configuration Profile Download (.mobileconfig)
+        function downloadIOSProfile() {
+            const profileXML = `<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>PayloadContent</key>
+    <array>
+        <dict>
+            <key>FullScreen</key>
+            <true/>
+            <key>IsRemovable</key>
+            <true/>
+            <key>Label</key>
+            <string>Flex AI</string>
+            <key>PayloadDescription</key>
+            <string>Flex AI Yapay Zeka Uygulaması</string>
+            <key>PayloadDisplayName</key>
+            <string>Flex AI</string>
+            <key>PayloadIdentifier</key>
+            <string>com.flexai.app.webclip</string>
+            <key>PayloadType</key>
+            <string>com.apple.webClip.managed</string>
+            <key>PayloadUUID</key>
+            <string>12345678-1234-1234-1234-123456789abc</string>
+            <key>PayloadVersion</key>
+            <integer>1</integer>
+            <key>URL</key>
+            <string>${window.location.href}</string>
+        </dict>
+    </array>
+    <key>PayloadDisplayName</key>
+    <string>Flex AI Profil Yükleyici</string>
+    <key>PayloadIdentifier</key>
+    <string>com.flexai.app</string>
+    <key>PayloadOrganization</key>
+    <string>Flex AI</string>
+    <key>PayloadType</key>
+    <string>Configuration</string>
+    <key>PayloadUUID</key>
+    <string>87654321-4321-4321-4321-cba987654321</string>
+    <key>PayloadVersion</key>
+    <integer>1</integer>
+</dict>
+</plist>`;
+
+            const blob = new Blob([profileXML], { type: 'application/x-apple-aspen-config' });
+            const url = URL.createObjectURL(blob);
+            
+            // Safari iOS Profil Yöneticisini Doğrudan Tetikler
+            window.location.href = url;
+
+            // Bilgilendirme Modalını Aç
+            setTimeout(() => {
+                document.getElementById('iosModal').classList.remove('hidden');
+            }, 1000);
+        }
+
+        // Android APK Download Simulation
+        function downloadAndroidAPK() {
+            alert("Flex AI Android APK indiriliyor...");
+        }
+
+        function closeModal() {
+            document.getElementById('iosModal').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
